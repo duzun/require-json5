@@ -1,0 +1,22 @@
+/**
+ * The tests doesn't have to cover all possible cases,
+ * as this is done in `json5`.
+ *
+ * We just need to make sure our module behaves as expected...
+ */
+{
+  name: /*a very important option*/ "json5",
+
+  infinity: Infinity,
+
+  "one-line": "comment 1", // this is a one line comment
+  "multi-line": "comment 2", /* here we go...
+    a comment in more then one
+    line
+  */
+
+  // rainbows
+  unicorn: /* ❤ */ "cake",
+
+  array: [1,2,3,],
+}

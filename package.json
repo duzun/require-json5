@@ -1,0 +1,51 @@
+{
+  "name": "require-json5",
+  "version": "1.0.0",
+  "description": "Require JSON5 files in node - a better JSON for ES5 era",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/",
+    "verup": "verup"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duzun/require-json5.git"
+  },
+  "keywords": [
+    "environment",
+    "env",
+    "util",
+    "settings",
+    "conf",
+    "configuration",
+    "config",
+    "parse",
+    "multiline",
+    "comments",
+    "trim",
+    "delete",
+    "remove",
+    "strip",
+    "json",
+    "require"
+  ],
+  "author": "Dumitru Uzun <contanct@duzun.me> (https://DUzun.Me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/duzun/require-json5/issues"
+  },
+  "homepage": "https://github.com/duzun/require-json5#readme",
+  "dependencies": {
+    "json5": "^x.x"
+  },
+  "devDependencies": {
+    "verup": "^1.x"
+  },
+  "extra": {
+    "verup": {
+      "files": [
+        "index.js"
+      ]
+    }
+  }
+}
