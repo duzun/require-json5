@@ -1,6 +1,6 @@
 {
   "name": "require-json5",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Require JSON5 files in node - a better JSON for ES5 era",
   "main": "index.js",
   "scripts": {
