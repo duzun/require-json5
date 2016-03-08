@@ -1,4 +1,4 @@
-# require-json5
+# require-json5 [![Build Status](https://travis-ci.org/duzun/require-json5.svg?branch=master)](https://travis-ci.org/duzun/require-json5)
 
 Require JSON5 files in node - a better JSON for ES5 era
 
