@@ -2,11 +2,11 @@
  * Require .json files with comments
  *
  * @license MIT
- * @version 1.0.1
+ * @version 1.0.2
  * @author Dumitru Uzun (DUzun.Me)
  */
 
-var VERSION = '1.0.1';
+var VERSION = '1.0.2';
 
 var fs = require('fs');
 var path = require('path');
