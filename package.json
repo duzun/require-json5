@@ -11,6 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/duzun/require-json5.git"
   },
+  "reveal": true,
   "keywords": [
     "environment",
     "env",
