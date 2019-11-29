@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/duzun/require-json5#readme",
   "dependencies": {
-    "json5": "^x.x"
+    "json5": "^2.x"
   },
   "devDependencies": {
     "verup": "^1.x"
