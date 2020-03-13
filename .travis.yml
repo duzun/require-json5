@@ -1,37 +1,40 @@
 language: node_js
+os: linux
+dist: trusty
 
 node_js:
-- stable
-- '12.0'
-- '11.0'
-- '10.0'
-- '9.0'
-- '8.0'
-- '7.0'
-- '6.0'
-- '5.0'
-- '4.0'
+    - stable
+    - "13.0"
+    - "12.0"
+    - "11.0"
+    - "10.0"
+    - "9.0"
+    - "8.0"
+    - "7.0"
+    - "6.0"
+    - "5.0"
+    - "4.0"
 
-matrix:
+jobs:
     fast_finish: true
     allow_failures:
+        - node_js: '9.0'
+        - node_js: '8.0'
         - node_js: "7.0"
         - node_js: "6.0"
         - node_js: "5.0"
         - node_js: "4.0"
 
-sudo: false
-
 cache:
     directories:
         - node_modules
+    timeout: 1440
 
 deploy:
-  provider: npm
-  email: contact@duzun.me
-  api_key:
-    secure: UeTmKdjg0MEmy8iK0ZmlmNww+hytHQoEkh7uhssV2Pizq2sSEKki9m64v7xe35Kwk38TcbMvrZkwtim/ZnZt1JJ2LOw8Ogz88OVviqAfkHOe2VRH8SrP3NpRFGFWLZ0JmvKGkvCLiDkLHiz+vSegUXDPwyGdpS932lyxJ5U3ntE=
-  on:
-    tags: true
-    repo: duzun/require-json5
-
+    provider: npm
+    email: contact@duzun.me
+    api_key:
+        secure: UeTmKdjg0MEmy8iK0ZmlmNww+hytHQoEkh7uhssV2Pizq2sSEKki9m64v7xe35Kwk38TcbMvrZkwtim/ZnZt1JJ2LOw8Ogz88OVviqAfkHOe2VRH8SrP3NpRFGFWLZ0JmvKGkvCLiDkLHiz+vSegUXDPwyGdpS932lyxJ5U3ntE=
+    on:
+        tags: true
+        repo: duzun/require-json5

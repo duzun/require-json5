@@ -2,11 +2,11 @@
  * Require .json files with comments
  *
  * @license MIT
- * @version 1.0.2
+ * @version 1.1.0
  * @author Dumitru Uzun (DUzun.Me)
  */
 
-var VERSION = '1.0.2';
+var VERSION = '1.1.0';
 
 var fs = require('fs');
 var path = require('path');
@@ -15,7 +15,16 @@ var JSON5 = require('json5');
 
 /// Require a JSON file with comments
 function requireJSON5(filename) {
-    if ( path.extname(filename) == '' ) filename += fs.existsSync(filename + '.json5') ? '.json5' : '.json';
+    if ( path.extname(filename) == '' ) {
+        const extensions = ['.json5', '.json'];
+        for(var i=0, l = extensions.length, ext; i<l; ++i) {
+            ext = extensions[i];
+            if(fs.existsSync(filename + ext)) {
+                filename += ext;
+                break;
+            }
+        }
+    }
     try {
         return JSON5.parse(stripBOM(fs.readFileSync(filename, 'utf8')));
     }
