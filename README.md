@@ -1,6 +1,6 @@
-# require-json5 [![Build Status](https://travis-ci.org/duzun/require-json5.svg?branch=master)](https://travis-ci.org/duzun/require-json5)
+# require-json5 [![Build Status](https://travis-ci.com/duzun/require-json5.svg?branch=master)](https://app.travis-ci.com/duzun/require-json5)
 
-Require JSON5 files in node - a better JSON for ES5 era
+Require JSON5 files in node - a better JSON for the JSNext era
 
 JSON5 is more human friendly, can contain comments, trailing commas, unquoted keys and more!
 
@@ -22,15 +22,17 @@ const requireJSON5 = require('require-json5');
 
 ```js
 let config = require("./config.json5");
+ // or w/o the extension, when "./config.json5" exists and there is no "./config.json", nor "./config.js"
+let config = require("./config");
 ```
 
-2) Load a `.json` file in JSON5 format
+2) Explicitly load a `.json` file in JSON5 format
 
 ```js
 let config = requireJSON5("./config.json");
 ```
 
-3) Load a .js file as JSON5 format. 
+3) Load a .js file as JSON5 format.
 This is useful if you don't like the `.json5` file extension
 and prefer to keep JSON5 in `.js` files.
 
@@ -49,6 +51,11 @@ let config = requireJSON5.parse('{ name: /*a very important option*/ "value" }')
 ```js
 require('require-json5').replace();
 let config = require("./config"); // can be config.json, config.json5 or config.js
+```
+
+5) Restore the original `require(.json)`
+```js
+require('require-json5').restore();
 ```
 
 ## Example of JSON5

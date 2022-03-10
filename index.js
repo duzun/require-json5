@@ -2,29 +2,39 @@
  * Require .json files with comments
  *
  * @license MIT
- * @version 1.1.0
+ * @version 1.2.0
  * @author Dumitru Uzun (DUzun.Me)
  */
 
-var VERSION = '1.1.0';
+const VERSION = '1.2.0';
 
-var fs = require('fs');
-var path = require('path');
+const fs = require('fs');
+const path = require('path');
 
-var JSON5 = require('json5');
+const JSON5 = require('json5');
 
 /// Require a JSON file with comments
 function requireJSON5(filename) {
     if ( path.extname(filename) == '' ) {
         const extensions = ['.json5', '.json'];
-        for(var i=0, l = extensions.length, ext; i<l; ++i) {
+        for (let i=0, l = extensions.length, ext; i<l; ++i) {
             ext = extensions[i];
-            if(fs.existsSync(filename + ext)) {
-                filename += ext;
+            const fn = filename + ext;
+            if (fs.existsSync(fn)) {
+                filename = fn;
                 break;
             }
         }
+
+        // ES5 alternative
+        // ['.json5', '.json'].some((ext) => {
+        //     const fn = filename + ext;
+        //     if (!fs.existsSync(fn)) return;
+        //     filename = fn;
+        //     return true;
+        // });
     }
+
     try {
         return JSON5.parse(stripBOM(fs.readFileSync(filename, 'utf8')));
     }
@@ -34,23 +44,50 @@ function requireJSON5(filename) {
     }
 }
 
+function require_hook(module, filename) {
+    module.exports = requireJSON5(filename);
+}
+
+const _backup_require_hooks = {};
+
 /// Override require for .json extension
-function replace_require() {
-    require.extensions['.json'] = function(module, filename) {
-        module.exports = requireJSON5(filename);
-    };
+function replace_require(ext) {
+    if (ext == undefined) ext = '.json';
+
+    const bak = require.extensions[ext];
+
+    if (bak === require_hook) return;
+
+    _backup_require_hooks[ext] = bak;
+    require.extensions[ext] = require_hook;
+}
+
+/// Restore the original require for .json extension
+function restore_require(ext) {
+    if (ext == undefined) ext = '.json';
+
+    const bak = _backup_require_hooks[ext];
+    if (!(bak && ext in _backup_require_hooks)) return false;
+
+    delete _backup_require_hooks[ext];
+
+    if (bak) {
+        require.extensions[ext] = bak;
+        return true;
+    }
+
+    return delete require.extensions[ext];
 }
 
 /// Register .json5 extension for require
-require.extensions['.json5'] = function(module, filename) {
-    module.exports = requireJSON5(filename);
-};
+replace_require('.json5');
 
 /// Exports:
 
 requireJSON5.parse           = JSON5.parse.bind(JSON5);
 requireJSON5.stringify       = JSON5.stringify.bind(JSON5);
 requireJSON5.replace         = replace_require;
+requireJSON5.restore         = restore_require;
 requireJSON5.VERSION         = VERSION;
 
 module.exports = requireJSON5;
