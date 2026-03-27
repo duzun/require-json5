@@ -1,0 +1,17 @@
+{
+  "compileOnSave": false,
+  "declaration": true,
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "declaration": true,
+    "outDir": ".",
+    "sourceMap": false
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "files": [
+    "index.ts"
+  ]
+}

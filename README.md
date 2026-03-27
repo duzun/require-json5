@@ -18,7 +18,7 @@ Include the lib:
 const requireJSON5 = require('require-json5');
 ```
 
-1) Require a JSON5 file
+1. Require a JSON5 file
 
 ```js
 let config = require("./config.json5");
@@ -26,34 +26,34 @@ let config = require("./config.json5");
 let config = require("./config");
 ```
 
-2) Explicitly load a `.json` file in JSON5 format
+2. Explicitly load a `.json` file in JSON5 format
 
 ```js
 let config = requireJSON5("./config.json");
 ```
 
-3) Load a .js file as JSON5 format.
-This is useful if you don't like the `.json5` file extension
-and prefer to keep JSON5 in `.js` files.
+3. Load a .js file as JSON5 format.
+   This is useful if you don't like the `.json5` file extension
+   and prefer to keep JSON5 in `.js` files.
 
 ```js
 let config = requireJSON5("./config.js");
 ```
 
-3) Parse a JSON5 string
+4. Parse a JSON5 string
 
 ```js
 let config = requireJSON5.parse('{ name: /*a very important option*/ "value" }');
 ```
 
-4) Use JSON5 for all `require(.json)` calls
+5. Use JSON5 for all `require(.json)` calls
 
 ```js
 require('require-json5').replace();
 let config = require("./config"); // can be config.json, config.json5 or config.js
 ```
 
-5) Restore the original `require(.json)`
+6. Restore the original `require(.json)`
 ```js
 require('require-json5').restore();
 ```
