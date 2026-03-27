@@ -1,9 +1,11 @@
 {
   "name": "require-json5",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Require JSON5 files in node - a better JSON for ES5 era",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
+    "build": "npx tsc --build",
     "test": "node test/",
     "verup": "npx verup"
   },
@@ -40,12 +42,14 @@
     "json5": "^2.x"
   },
   "devDependencies": {
+    "@types/node": "^17.0.42",
+    "typescript": "^4.7.3",
     "verup": "^1.x"
   },
   "extra": {
     "verup": {
       "files": [
-        "index.js"
+        "index.ts"
       ]
     }
   }

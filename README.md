@@ -40,13 +40,13 @@ and prefer to keep JSON5 in `.js` files.
 let config = requireJSON5("./config.js");
 ```
 
-3) Parse a JSON5 string
+4) Parse a JSON5 string
 
 ```js
 let config = requireJSON5.parse('{ name: /*a very important option*/ "value" }');
 ```
 
-4) Use JSON5 for all `require(.json)` calls
+5) Use JSON5 for all `require(.json)` calls
 
 ```js
 require('require-json5').replace();
